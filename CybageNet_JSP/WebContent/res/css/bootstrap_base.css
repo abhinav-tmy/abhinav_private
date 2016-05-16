@@ -1,0 +1,15 @@
+.gap-above{
+	margin-top: 4px;
+}
+
+li.right{
+	position: absolute;
+	right:0;
+}
+
+.headlogo{
+	font-family: "Segoe Script";
+	font-size : 35px;
+	font-weight: bold;
+	margin-top: 10px;
+}
