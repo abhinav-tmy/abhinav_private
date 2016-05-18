@@ -34,22 +34,25 @@ public class LoginServlet extends HttpServlet {
 		
 			// check password
 			if (user.getUserPass().equals(request.getParameter("pass"))) {
-				HttpSession session = request.getSession();
+				HttpSession session = request.getSession(true);
 				session.setAttribute("user", user);
 				session.setAttribute("newLogin", true);
 				response.sendRedirect("index.jsp");
 			} else {
-				request.setAttribute("msg", "Invalid username or password"); 
-				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-				rd.forward(request, response);
+				response.setContentType("text/html");
+				PrintWriter pw = response.getWriter();
+				RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+				rd.include(request, response);
+				pw.print("<center><span color:'red'>Invaid password</span></center>");
 			}
 		}
 		// if user not found in the data base
 		catch (UserDAOException ex) {
-			request.setAttribute("msg", "Invalid username or password");
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-			rd.forward(request, response);
-			
+			response.setContentType("text/html");
+			PrintWriter pw = response.getWriter();
+			RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+			rd.include(request, response);
+			pw.print("<center><span style='color:red'>Invaid username</span></center>");
 		}
 		// for any other exception
 		catch (Exception ex) {

@@ -5,7 +5,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Delete Book</title>
-		<link rel='stylesheet' type='text/css' href="../res/css/bootstrap.css">
+		<link rel='stylesheet' type='text/css' href="../res/css/base.css">
 	</head>
 	<body>
 			<c:if test="${!empty param.btn}">
@@ -15,29 +15,18 @@
 					<jsp:setProperty property="bookId" name="book"/>
 					${bookDao.deleteBook(book)}
 				</c:if>
-				<c:set var="msg" value="Book Deleted Successfully!" scope="session"></c:set>
-				<c:set var="msgType" value="success" scope="session"></c:set>
-				<c:redirect url="../index.jsp"></c:redirect>
+				<c:redirect url="../index.jsp" ></c:redirect>
 			</c:if>
 			<br><br><br><br><br><br><br><br><br><br><br><br>
-			<div class="col-md-10 col-md-offset-1">
 			<form method='post' action='#'>
-				<div class="panel panel-default">
-      				<div class="panel-heading">
-        				<b>Confirmation</b>
-      				</div>	
-      			<div class="panel-body">	
-      			<h3>Are you sure you want to delete this book and all its reviews?</h3>	
+				<div style='text-align: center'>
+					<h1>Are you sure?</h1><br>
+					<p>Are you sure that you want to delete this book?</p>
+					<br>
+					<input type='hidden' value='request.getParameter(id)'>
+					<input class='subbtn' type='submit' name='btn' value='yes'>&nbsp;&nbsp;&nbsp;<input class='subbtn' type='submit' name='btn' value='no'>
 				</div>
-					<div class="panel-footer">
-	        		<input type='hidden' value='request.getParameter(id)'>
-					<input class="btn btn-danger" type='submit' name='btn' value='yes'>
-					&nbsp;&nbsp;&nbsp;
-					<input class="btn btn-default" type='submit' name='btn' value='no'>
-				 </div>
-				</div>	
 			</form>
-			</div>
 				
 	</body>
 </html>

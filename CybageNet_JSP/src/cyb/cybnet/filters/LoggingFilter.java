@@ -45,8 +45,9 @@ public class LoggingFilter implements Filter {
 			
 			if(session!=null && session.getAttribute("user")!=null && ((Boolean)session.getAttribute("newLogin")).equals(true)){
 				System.out.println("logging user");
+				session.setAttribute("newSession", false);
 				User user = (User) session.getAttribute("user");
-				logWriter.print(user.getUserName() + " logged in at " + new Date().toLocaleString() + "\n");
+				logWriter.print(user.getUserName() + " logged in at " + new Date() + "\n");
 				logWriter.flush();	
 			}
 			

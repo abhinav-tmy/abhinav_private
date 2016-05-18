@@ -20,6 +20,7 @@ public class MySessionListener implements HttpSessionListener {
      * @see HttpSessionListener#sessionCreated(HttpSessionEvent)
      */
     public void sessionCreated(HttpSessionEvent arg0)  { 
+    	System.out.println(arg0.getSource().toString());
     	System.out.println("creating session");
          sessionCount++;
     }

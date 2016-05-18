@@ -29,9 +29,7 @@ public class AdminValidationFilter implements Filter {
 			chain.doFilter(request, response);
 		}
 		else{
-			RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
-			req.setAttribute("msg","please login first");
-			rd.forward(request, response);
+			resp.sendRedirect("/CybageNet_JSP/Login.jsp");
 		}
 	}
 
